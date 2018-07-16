@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logged Users</title>
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/my_css.css" rel="stylesheet" type="text/css">
+    <script>
+        function getUsers() {
+            // создаем оъект запроса
+            var xmlhttp = new XMLHttpRequest();
+            // указываем url, куда будет отправлен запрос
+            var url = "/users";
+            // описываем функцию,которая будет срабатывать
+            // при корректной обработке запроса сервером
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    // получаем список людей в формате JSON
+                    var users = JSON.parse(this.responseText);
+                    // получаем объект на странице по его id
+                    var usersTable = document.getElementById('users_table');
+                    // готовим html-код, который нужно будет поместить
+                    // внутри таблицы
+                    var htmlUsersResult = "";
+                    htmlUsersResult = "<tr>" +
+                        "            <th>Имя</th>\n" +
+                        "            <th>Фамилия</th>\n" +
+                        "        </tr>";
+                    for (var i = 0; i < users.length - 1; i++) {
+                        htmlUsersResult += '<tr>';
+                        htmlUsersResult += '<td>' + users[i].name + '</td>';
+                        htmlUsersResult += '<td>' + users[i].surname + '</td>';
+                        htmlUsersResult += '</tr>';
+                    }
+                    usersTable.innerHTML = htmlUsersResult;
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body onload="getUsers()">
+<!-- LogIn modal form -->
+    <div class="modal" tabindex="-1" role="dialog" id="log-in-form" area-labelledby="log-in-form" area-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #DEDAA9">
+                    <h3 class="modal-title">Log In</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--the form itself-->
+                    <form>
+                        <div class="form-group1">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group1">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <p style="margin-top: 5px; font-size: 16pt"> Have never been here before? <a href="registration_page.html">Register!</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="background-color: #DEDAA9; opacity: 0.75">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="home_page.html"><button type="button" class="btn btn-primary1">Enter Account</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" >
+        <!-- the site is down here-->
+        <a class="navbar-brand" href="home_page.html"><img src="https://png.icons8.com/material/500/341953/sleep.png" style="height: 50px"></a>
+        <p style="margin:10px 15px 10px 0px;">WebSite</p>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <form class="form-inline my-2 my-lg-0" action="http://www.google.ru/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="What u wanna find?" aria-label="Search" name="q">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        Search
+                    </button>
+                </form>
+            </ul>
+            <button class="btn btn-outline-secondary" type="submit" style="margin-right: 9px" data-toggle="modal" data-target="#log-in-form">
+                Log in
+            </button>
+        </div>
+    </nav>
+
+    <p>Boy, look at these du-u-u-u-u-des</p>
+
+    <form action="/info">
+        <input name="name">
+        <input name="surname">
+        <button name="">hhhh</button>
+    </form>
+
+    <form action="/users">
+        <button>sdfgh</button>
+    </form>
+</body>
+</html>

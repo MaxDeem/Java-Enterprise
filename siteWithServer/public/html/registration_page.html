@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/my_css.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="home_page.html"><img src="https://png.icons8.com/material/200/341953/sleep.png" style="height: 50px"></a>
+        <p style="margin:10px 15px 10px 0px;">WebSite</p>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <form class="form-inline my-2 my-lg-0" action="http://www.google.ru/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="What u wanna find?" aria-label="Search" name="q">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        Search
+                    </button>
+                </form>
+            </ul>
+            <button class="btn btn-disabled" type="submit" style="margin-right: 9px" data-toggle="modal" data-target="#log-in-form" disabled>
+                Log in
+            </button>
+        </div>
+    </nav>
+    <h3 style="text-align: center">Profile Info</h3>
+    <div class="alert alert-secondary" role="alert">
+        <form action="/info">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter your First Name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="surname"class="form-control" placeholder="Enter your Last Name">
+            </div>
+            <p style="font-size: 18px; margin-left: 75px">Date of Birth</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <!--Date dropdown -->
+                        <div class="btn-group">
+                            <input type="day" class="form-control"
+                                                            aria-describedby="emailHelp" placeholder="Date"></button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
+                                <a class="dropdown-item" href="#">4</a>
+                                <a class="dropdown-item" href="#">5</a>
+                                <a class="dropdown-item" href="#">6</a>
+                                <a class="dropdown-item" href="#">7</a>
+                                <a class="dropdown-item" href="#">8</a>
+                                <a class="dropdown-item" href="#">9</a>
+                                <a class="dropdown-item" href="#">10</a>
+                                <a class="dropdown-item" href="#">11</a>
+                                <a class="dropdown-item" href="#">12</a>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="btn-group">
+                            <input type="smth" class="form-control"
+                                   aria-describedby="emailHelp" placeholder="Month"></button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                               <a class="dropdown-item" href="#">January</a>
+                               <a class="dropdown-item" href="#">February</a>
+                               <a class="dropdown-item" href="#">March</a>
+                               <a class="dropdown-item" href="#">April</a>
+                               <a class="dropdown-item" href="#">May</a>
+                               <a class="dropdown-item" href="#">June</a>
+                               <a class="dropdown-item" href="#">July</a>
+                               <a class="dropdown-item" href="#">August</a>
+                               <a class="dropdown-item" href="#">September</a>
+                               <a class="dropdown-item" href="#">October</a>
+                               <a class="dropdown-item" href="#">November</a>
+                               <a class="dropdown-item" href="#">December</a>
+                             </div>
+                        </div>
+                    <div class="col-sm">
+                        <div class="btn-group">
+                            <input type="email" class="form-control"
+                                   aria-describedby="emailHelp" placeholder="Year"></button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">2000</a>
+                                <a class="dropdown-item" href="#">1999</a>
+                                <a class="dropdown-item" href="#">1998</a>
+                                <a class="dropdown-item" href="#">1997</a>
+                                <a class="dropdown-item" href="#">1996</a>
+                                <a class="dropdown-item" href="#">1995</a>
+                                <a class="dropdown-item" href="#">1994</a>
+                                <a class="dropdown-item" href="#">1993</a>
+                                <a class="dropdown-item" href="#">1992</a>
+                                <a class="dropdown-item" href="#">1991</a>
+                                <a class="dropdown-item" href="#">1990</a>
+                                <a class="dropdown-item" href="#">1989</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="">Next Step</button>
+            <a href="#" style="margin: 10px 0px 0px 204px; font-size: 17pt; color: #341953; "
+                                    data-toggle="modal" data-target="#log-in-form">Already have an account?</a>
+            <div class="modal" tabindex="-1" role="dialog" id="log-in-form" area-labelledby="log-in-form" area-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #DEDAA9">
+                            <h3 class="modal-title">Log In</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!--the form itself-->
+                            <form>
+                                <div class="form-group1">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                </div>
+                                <div class="form-group1">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer" style="background-color: #DEDAA9; opacity: 0.75">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="home_page.html"><button type="submit" name="" class="btn btn-primary1">Enter Account</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container" style="margin-left: 0px; background-color: #DEDAA9; opacity: 0.75">
+        <footer class="footer fixed-bottom" style="background-color:#DEDAA9; width: 1534px">
+            <div class="container" style="color: white">
+                <h4>
+                    <a class="footer-stuff" style="margin-left: 200px" href="#">Company Information</a>
+                    <a class="footer-stuff" href="#">Contact us</a>
+                    <a class="footer-stuff" href="#">Reviews</a>
+                    <a class="footer-stuff" href="#">Terms of service</a>
+                </h4>
+                <a style="color: #341953; font-size: 20pt; margin-left: 310px">These guys helped a lot: <a href="#" style="font-size: 20pt; color: #341953">Razzzil</a>
+                    <a style="color: #341953; font-size: 20pt">and</a> <a href="#" style="font-size: 20pt; color: #341953">Timur</a></a>
+                <p class="footer-copyright" style="margin-left: 420px">© 2018 Dude's work </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
