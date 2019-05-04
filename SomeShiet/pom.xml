@@ -25,15 +25,12 @@
         </plugins>
     </build>
 
-
-    <properties>
-        <spring-version>5.1.3.RELEASE</spring-version>
-    </properties>
-
-    <groupId>ru.itis</groupId>
-    <artifactId>FoodGetter</artifactId>
-    <version>0.1</version>
+    <groupId>mine</groupId>
+    <artifactId>SomeShiet</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
@@ -50,7 +47,9 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -62,6 +61,7 @@
             <artifactId>jackson-core</artifactId>
             <version>2.9.8</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -170,7 +170,7 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -178,6 +178,7 @@
             <version>5.1.5.RELEASE</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -197,11 +198,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.2.Final</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>5.1.5.RELEASE</version>
@@ -213,7 +209,9 @@
             <version>2.1.6.RELEASE</version>
         </dependency>
 
-
     </dependencies>
+
+
+
 
 </project>
