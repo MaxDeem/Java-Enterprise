@@ -6,10 +6,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "system_user")
@@ -17,18 +16,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Column(name = "first_name")
     String firstName;
-    @Column(name = "last_name")
     String lastName;
     String address;
     String email;
-    @Column(name = "hash_pass")
     String hashPass;
-    @OneToOne(mappedBy = "status")
+    @ManyToOne
     Status status;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     List<Order> orders;
-    public User() {
-    }
 }

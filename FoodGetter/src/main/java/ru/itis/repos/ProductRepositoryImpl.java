@@ -26,7 +26,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     private static final String FIND_BY_ID = "SELECT product.name, price, product_type.name AS type FROM product " +
             "JOIN product_type on product.id = product_type.id WHERE id = ?;";
     //language = sql
-    private static final String ADD_PRODUCT = "INSERT INTO product (name, price, shop_id, type_id) VALUES (?, ?, ?, ?);";
+    private static final String ADD_PRODUCT = "INSERT INTO product (name, price, type_id, shop_id) VALUES (?, ?, ?, ?);";
     //language = sql
     private static final String EDIT = "UPDATE product SET name = ?, price = ?, type_id = ? WHERE id = ?;";
     //language = sql
@@ -64,7 +64,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
     @Override
     public void addProduct(Product item) {
-        jdbcTemplate.update(ADD_PRODUCT, item.getName(), item.getPrice(), item.getShop().getId(), item.getType().getId());
+        jdbcTemplate.update(ADD_PRODUCT, item.getName(), item.getPrice(), item.getType().getId(), item.getShop().getId());
     }
     @Override
     public void edit(Product item) {

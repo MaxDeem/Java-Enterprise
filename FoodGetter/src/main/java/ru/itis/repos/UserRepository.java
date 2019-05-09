@@ -1,5 +1,6 @@
 package ru.itis.repos;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.itis.models.Order;
 import ru.itis.models.User;
 

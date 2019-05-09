@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
+import ru.itis.models.DeliveryMan;
 import ru.itis.models.Order;
 import ru.itis.models.User;
 
@@ -28,9 +29,18 @@ public class OrderRepositoryImpl implements OrderRepository {
             "JOIN shop on shop.id = shopping_order.id " +
             "JOIN system_user su on shopping_order.id = su.order_id WHERE shopping_order.id = ?;";
     //language = sql
-    private static final String ADD_ORDER = "INSERT INTO shopping_order (from_address, to_address, price) VALUES (?, ?, ?);";
+    private static final String FIND_ORDERED = "SELECT shop.name AS ordered_from, from_address, first_name AS ordered_by, " +
+            "to_address, price, paid AS status FROM shopping_order " +
+            "JOIN shop on shop.id = shopping_order.id " +
+            "JOIN system_user su on shopping_order.id = su.order_id WHERE deliverer_id = NULL;";
     //language = sql
-    private static final String UPDATE_STATUS = "UPDATE shopping_order SET paid = TRUE;";
+    private static final String ADD_ORDER = "INSERT INTO shopping_order (from_address, to_address, price, user_id) VALUES (?, ?, ?, ?);";
+    //language = sql
+    private static final String UPDATE_DELIVERER = "UPDATE shopping_order SET deliverer_id = ? WHERE id = ?";
+    //language = sql
+    private static final String UPDATE_ORDER = "UPDATE shopping_order SET to_address = ? WHERE id = ?;";
+    //language = sql
+    private static final String UPDATE_STATUS = "UPDATE shopping_order SET paid = TRUE WHERE id = ?;";
     //language = sql
     private static final String DELETE_BY_USER = "DELETE FROM shopping_order WHERE user_id = ?";
     //language = sql
@@ -53,7 +63,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         return jdbcTemplate.query(FIND_ALL, rowMapper);
     }
     @Override
-    public List<Order> FindByUser(User user) {
+    public List<Order> findByUser(User user) {
         return jdbcTemplate.query(FIND_BY_USER, rowMapper, user.getId());
     }
     @Override
@@ -61,12 +71,24 @@ public class OrderRepositoryImpl implements OrderRepository {
         return jdbcTemplate.queryForObject(FIND_BY_ID, rowMapper, id);
     }
     @Override
-    public void addOrder(Order order) {
-        jdbcTemplate.update(ADD_ORDER, order.getFrom(), order.getTo(), order.getPrice());
+    public List<Order> findOrdered() {
+        return jdbcTemplate.query(FIND_ORDERED, rowMapper);
     }
     @Override
-    public void updateOrderStatus() {
-        jdbcTemplate.update(UPDATE_STATUS);
+    public void addOrder(Order order, User user) {
+        jdbcTemplate.update(ADD_ORDER, order.getFrom(), order.getTo(), order.getPrice(), user.getId());
+    }
+    @Override
+    public void updateDeliverer(Order order, DeliveryMan deliveryMan) {
+        jdbcTemplate.update(UPDATE_DELIVERER, deliveryMan.getId(), order.getId());
+    }
+    @Override
+    public void updateOrder(Order order) {
+        jdbcTemplate.update(UPDATE_ORDER, order.getTo(), order.getId());
+    }
+    @Override
+    public void updateOrderStatus(Order order) {
+        jdbcTemplate.update(UPDATE_STATUS, order.getId());
     }
     @Override
     public void deleteByUser(User user) {

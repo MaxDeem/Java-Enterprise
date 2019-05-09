@@ -1,4 +1,4 @@
-package ru.itis.app;
+package ru.itis.configs;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,5 +24,6 @@ public class HibernateSessionFactoryUtil {
                 e.printStackTrace();
             }
         }
+        return sessionFactory;
     }
 }

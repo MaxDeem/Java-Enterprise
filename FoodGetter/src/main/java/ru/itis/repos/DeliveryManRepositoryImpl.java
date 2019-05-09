@@ -12,12 +12,18 @@ import java.util.List;
 public class DeliveryManRepositoryImpl implements DeliveryManRepository {
 
     //language = sql
+    public static final String FIND_ALL = "SELECT first_name, last_name, address FROM deliveryman;";
+    //language = sql
     public static final String FIND_BY_STATUS = "SELECT first_name, last_name, address FROM deliveryman WHERE status_id = ?;";
     //language = sql
     public static final String FIND_BY_ID = "SELECT first_name, last_name, email, address FROM deliveryman WHERE id = ?;";
     //language = sql
     public static final String ADD_DELIVERER = "INSERT INTO deliveryman (first_name, last_name, email, address, hash_pass, status_id) " +
             "VALUES (?, ?. ?, ?, ?, ?);";
+    //language = sql
+    public static final String UPDATE_BUSY = "UPDATE deliveryman SET isBusy = true WHERE id = ?;";
+    //language = sql
+    public static final String UPDATE_FREE = "UPDATE deliveryman SET isBusy = false WHERE id = ?";
     //language = sql
     public static final String UPDATE_DELIVERER = "UPDATE deliveryman SET first_name = ?, last_name = ?, address = ? " +
             "WHERE id = ?;";
@@ -38,6 +44,10 @@ public class DeliveryManRepositoryImpl implements DeliveryManRepository {
     );
 
     @Override
+    public List<DeliveryMan> findAll() {
+        return jdbcTemplate.query(FIND_ALL, rowMapper);
+    }
+    @Override
     public List<DeliveryMan> findByStatus(Long id) {
         return jdbcTemplate.query(FIND_BY_STATUS, rowMapper, id);
     }
@@ -50,6 +60,17 @@ public class DeliveryManRepositoryImpl implements DeliveryManRepository {
         jdbcTemplate.update(ADD_DELIVERER, user.getFirstName(), user.getLastName(), user.getEmail(), user.getAddress(),
                 user.getHashPass(), user.getStatus().getId());
     }
+
+    @Override
+    public void setBusy(DeliveryMan deliveryMan) {
+        jdbcTemplate.update(UPDATE_BUSY, deliveryMan.getId());
+    }
+
+    @Override
+    public void setFree(DeliveryMan deliveryMan) {
+        jdbcTemplate.update(UPDATE_FREE, deliveryMan.getId());
+    }
+
     @Override
     public void updateDeliverer(DeliveryMan user) {
         jdbcTemplate.update(UPDATE_DELIVERER, user.getFirstName(), user.getLastName(), user.getAddress());

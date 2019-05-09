@@ -19,12 +19,14 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    
+
+    //language = sqk
+    private static final String FIND_ALL = "SELECT first_name, last_name, address FROM owner;";
     //language = SQL
-    private static final String SELECT_BY_STATUS = "SELECT first_name, last_name, email, address FROM owner " +
+    private static final String FIND_BY_STATUS = "SELECT first_name, last_name, email, address FROM owner " +
             "WHERE status_id = ?;";
     //language = SQL
-    private static final String SELECT_BY_ID = "SELECT first_name, last_name, email, address FROM owner " +
+    private static final String FIND_BY_ID = "SELECT first_name, last_name, email, address FROM owner " +
             "WHERE id = ?;";
     //language = SQL
     private static final String INSERT_USER = "INSERT INTO owner (first_name, last_name, email, hash_pass, " +
@@ -45,14 +47,18 @@ public class OwnerRepositoryImpl implements OwnerRepository {
             .hashPass(resultSet.getString("hash_pass"))
             .registrationNumber(resultSet.getLong("psrnsp"))
             .build();
-    
+
+    @Override
+    public List<Owner> findAll() {
+        return jdbcTemplate.query(FIND_ALL, rowMapper);
+    }
     @Override
     public List<Owner> findByStatus(Long id) {
-        return jdbcTemplate.query(SELECT_BY_STATUS, rowMapper, id);
+        return jdbcTemplate.query(FIND_BY_STATUS, rowMapper, id);
     }
     @Override
     public Owner findById(Long id) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, rowMapper, id);
+        return jdbcTemplate.queryForObject(FIND_BY_ID, rowMapper, id);
     }
     @Override
     public void addOwner(Owner owner) {

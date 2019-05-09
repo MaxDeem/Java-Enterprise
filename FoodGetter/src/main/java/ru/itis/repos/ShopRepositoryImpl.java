@@ -20,7 +20,7 @@ public class ShopRepositoryImpl implements ShopRepository {
             "JOIN system_user on shop.id = system_user.shop_id WHERE id = ?;";
     //language = sql
     private static final String FIND_BY_NAME = "SELECT shop.address, first_name AS owner FROM shop " +
-            "JOIN system_user on shop.id = system_user.shop_id WHERE name = ?;";
+            "JOIN system_user on shop.id = system_user.shop_id WHERE ? LIKE name || '%';";
     //language = sql
     private static final String ADD_SHOP = "INSERT INTO shop (name, address) VALUES (?, ?);";
     //language = sql
